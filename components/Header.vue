@@ -40,7 +40,6 @@ export default {
   background-color: #fff;
   padding: 10px 20px;
   text-align: center;
-  /* border-bottom: 1px solid #ddd; */
   font-family: 'Athiti', sans-serif;
   z-index: 1000; /* Ensure the header has the highest z-index */
   position: relative;
@@ -48,7 +47,7 @@ export default {
 
 .header .promo {
   font-size: 1.1rem;
-  color: #333;
+  background-color: rgba(255, 255, 255, 0.3); /* Increase transparency to see the banner */
 }
 
 .header .promo button {
@@ -58,6 +57,7 @@ export default {
   padding: 5px 10px;
   border-radius: 10px;
   cursor: pointer;
+
 }
 
 .nav {
@@ -92,7 +92,7 @@ export default {
   display: flex;
   margin-left: auto;
   background: transparent;
-  /* ทำให้ .menu ขยับไปทางขวาสุด */
+
 }
 
 .menu a {

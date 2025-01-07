@@ -21,11 +21,6 @@
       </carousel>
     </section>
 
-
-
-
-
-
     <!-- End of simplified banner content -->
     <section>
       <div class="container-fluid">
@@ -433,11 +428,9 @@ button {
 
 .header-section {
   position: absolute;
-  /* Change to absolute to overlay the banner */
   top: 0;
   width: 100%;
   z-index: 3;
-  /* ตั้งค่า z-index ให้สูงกว่าแบนเนอร์ */
   background: transparent;
   /* Remove background */
 }
@@ -445,7 +438,6 @@ button {
 .footer-section {
   position: relative;
   z-index: 3;
-  /* ตั้งค่า z-index ให้สูงกว่าแบนเนอร์ */
 }
 
 .banner {

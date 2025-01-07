@@ -36,7 +36,7 @@ export default {
     '@nuxtjs/auth-next'
   ],
   axios: {
-    baseURL: 'http://192.168.1.10:8000/api', // ตั้งค่าให้เป็น IP ของเครื่อง Laravel
+    baseURL: 'http://127.0.0.1:8000/api', // Ensure only one baseURL is set
   },
   auth: {
     strategies: {
@@ -60,8 +60,4 @@ export default {
     }
   },
   build: {},
-  server: {
-    port: 8000,
-    host: "0.0.0.0",
-  },
 };

@@ -29,6 +29,7 @@
     <!-- End of simplified banner content -->
     <section>
       <div class="container-fluid">
+        <h1>API DATA : {{ message }}</h1>
         <div class="d-flex justify-content-start align-items-center about-section">
           <div class="text-left p-3 about-content">
             <div class="d-flex align-items-center mb-2">
@@ -405,9 +406,16 @@ export default {
     handleButtonClick(title) {
       console.log(`Button clicked on ${title}`);
     }
+  },
+  async asyncData({ $axios }) {
+    const response = await $axios.get('http://127.0.0.1:8000/api/my-endpoint');
+    return {
+      message: response.data.data
+    };
   }
 }
 </script>
+
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Athiti:wght@200;300;400;500;600;700&family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&display=swap');

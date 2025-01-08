@@ -30,8 +30,8 @@
             </p>
             <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
           </div>
-          <div class="about-image">
-            <img src="/service/Livingroom.png" alt="Livingroom" class="img-fluid">
+          <div class="about-image frame">
+            <img src="/long.jpg "alt="Livingroom" class="img-fluid">
           </div>
         </div>
       </section>
@@ -49,8 +49,8 @@
             </p>
             <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
           </div>
-          <div class="about-image">
-            <img src="/service/Bedroom.png" alt="Bedroom" class="img-fluid">
+          <div class="about-image frame">
+            <img src="/long.jpg " alt="Bedroom" class="img-fluid">
           </div>
         </div>
       </section>
@@ -68,8 +68,8 @@
             </p>
             <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
           </div>
-          <div class="about-image">
-            <img src="/service/Walk-in Closet.png" alt="Walk-in Closet" class="img-fluid">
+          <div class="about-image frame">
+            <img src="/long.jpg " alt="Walk-in Closet" class="img-fluid">
           </div>
         </div>
       </section>
@@ -87,8 +87,8 @@
             </p>
             <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
           </div>
-          <div class="about-image">
-            <img src="/service/Kitchen.png" alt="Kitchen" class="img-fluid">
+          <div class="about-image frame">
+            <img src="/long.jpg " alt="Kitchen" class="img-fluid">
           </div>
         </div>
       </section>
@@ -285,5 +285,19 @@ button {
 
 .work-btn:hover::after {
   transform: translateX(5px);
+}
+
+.frame {
+  border-radius: 50% 0% 0 50%; /* ปรับค่านี้เพื่อให้เฉพาะมุมซ้ายบนโค้ง */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+.frame img {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
 }
 </style>

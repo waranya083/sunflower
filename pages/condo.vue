@@ -30,8 +30,8 @@
             </p>
             <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
           </div>
-          <div class="about-image">
-            <img src="/service/Livingroom.png" alt="Livingroom" class="img-fluid">
+          <div class="about-image frame">
+            <img src="/long.jpg" alt="Livingroom" class="img-fluid">
           </div>
         </div>
       </section>
@@ -49,8 +49,8 @@
             </p>
             <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
           </div>
-          <div class="about-image">
-            <img src="/service/Bedroom.png" alt="Bedroom" class="img-fluid">
+          <div class="about-image frame-2">
+            <img src="/long.jpg" alt="Bedroom" class="img-fluid">
           </div>
         </div>
       </section>
@@ -68,8 +68,8 @@
             </p>
             <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
           </div>
-          <div class="about-image">
-            <img src="/service/Walk-in Closet.png" alt="Walk-in Closet" class="img-fluid">
+          <div class="about-image frame">
+            <img src="/long.jpg" alt="Walk-in Closet" class="img-fluid">
           </div>
         </div>
       </section>
@@ -87,8 +87,8 @@
             </p>
             <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
           </div>
-          <div class="about-image">
-            <img src="/service/Kitchen.png" alt="Kitchen" class="img-fluid">
+          <div class="about-image frame-2">
+            <img src="/long.jpg" alt="Kitchen" class="img-fluid">
           </div>
         </div>
       </section>
@@ -198,12 +198,17 @@ button {
   display: flex;
   justify-content: space-between;
   margin-bottom: 40px; /* Add margin to create space between sections */
+  padding: 0; /* Remove padding from the section */
 }
 
 .about-image {
   max-width: 100%;
-  margin-left: auto;
-  margin-right: 0; /* Ensure the image is aligned to the right edge */
+  width: 100%; /* Make the image full width */
+  height: 350px; /* Keep the height consistent */
+  margin: 0; /* Remove margin */
+  padding: 0; /* Remove padding */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+  align-self: flex-end; /* Align the image to the right edge */
 }
 
 .about-content {
@@ -286,4 +291,30 @@ button {
 .work-btn:hover::after {
   transform: translateX(5px);
 }
+
+/* Custom frame styling */
+.frame {
+  border-radius: 35% 0 0 0; /* ปรับค่านี้เพื่อให้เฉพาะมุมซ้ายบนโค้ง */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+.frame-2 {
+  border-radius: 0% 0% 0% 35%; /* ปรับค่านี้เพื่อให้เฉพาะมุมซ้ายบนโค้ง */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
 </style>

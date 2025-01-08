@@ -45,7 +45,7 @@
     <section>
       <div class="container-fluid">
         <div class="d-flex justify-content-start align-items-center"
-          style="min-height: 90vh; padding: 0; margin-top: -360px;">
+          style="min-height: 90vh; padding: 0; margin-top: -310px;">
           <div class="text-left p-3" style="max-width: 1200px; font-size: 1.1rem; margin: auto; padding-bottom: 120px;">
             <div style="display: flex; align-items: center; margin-bottom: 20px;">
               <div
@@ -486,7 +486,7 @@ h2 {
 }
 
 .about-section {
-  min-height: 100vh;
+  min-height: 70vh;
   display: flex;
   padding: 0;
   margin-top: -100px;
@@ -512,8 +512,8 @@ h2 {
 .about-text {
   font-size: 1.2rem;
   line-height: 1.2;
-  margin-top: 0;
-
+  margin-top: 10px;
+  margin-bottom: 10px; /* Reduce margin-bottom to make text closer to button */
 }
 
 .about-btn {
@@ -524,7 +524,7 @@ h2 {
   font-size: 1rem;
   font-family: 'Athiti', 'IBM Plex Sans Thai', sans-serif;
   /* Use the same font as the rest of the website */
-  margin-top: 20px;
+  margin-top: 20px; /* Reduce margin-top to make button closer to text */
   text-decoration: none;
   border-radius: 50px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);

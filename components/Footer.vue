@@ -54,6 +54,9 @@ footer {
   text-align: left;
   width: 100%; /* Set width to 100% */
   font-family: 'Athiti', sans-serif;
+  box-sizing: border-box; /* Ensure padding is included in the width */
+  position: relative;
+  bottom: 0;
 }
 
 .footer-content {
@@ -114,7 +117,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* Ensure items stay on the same row */
   margin-top: 20px;
   text-align: left;
   max-width: 1200px; /* Set max-width to 1200px */
@@ -135,6 +138,83 @@ footer {
 
 .footer-bottom .social-icons a {
   color: #ffffff;
-  font-size: 18px;
+  font-size: 16px; /* Reduce font size */
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left */
+  }
+
+  .footer-section {
+    margin-bottom: 20px;
+    text-align: left; /* Align text to the left */
+  }
+
+  .footer-section.learn-more {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .footer-section.email {
+    margin-left: 0;
+  }
+
+  .footer-bottom {
+    flex-direction: row;
+    align-items: center; /* Align items to the center */
+    text-align: left; /* Align text to the left */
+  }
+
+  .footer-bottom p {
+    margin-bottom: 0;
+    flex: 1;
+  }
+
+  .footer-bottom .social-icons {
+    justify-content: flex-end; /* Align icons to the right */
+    margin-right: 0;
+    font-size: 14px; /* Further reduce font size */
+    gap: 0px; /* Reduce space between icons */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left */
+  }
+
+  .footer-section {
+    margin-bottom: 15px;
+    text-align: left; /* Align text to the left */
+  }
+
+  .footer-section.learn-more {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .footer-section.email {
+    margin-left: 0;
+  }
+
+  .footer-bottom {
+    flex-direction: row;
+    align-items: center; /* Align items to the center */
+    text-align: left; /* Align text to the left */
+  }
+
+  .footer-bottom p {
+    margin-bottom: 0;
+    flex: 1;
+  }
+
+  .footer-bottom .social-icons {
+    justify-content: flex-end; /* Align icons to the right */
+    margin-right: 0;
+    font-size: 14px; /* Further reduce font size */
+  }
 }
 </style>

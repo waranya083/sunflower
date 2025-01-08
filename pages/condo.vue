@@ -5,11 +5,11 @@
       style="background-image:url('/banner/servicebn.png'); height: 70vh; background-position: bottom;">
       <div class="container h-100 d-flex justify-content-center align-items-center">
         <div class="text-center">
-          <h1 class="text-white">Service</h1>
+          <h1 class="text-white">รับออกแบบตกแต่งภายในคอนโด</h1>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center bg-transparent p-0 m-0">
               <li class="breadcrumb-item"><a href="/" class="text-white">Home</a></li>
-              <li class="breadcrumb-item active text-white" aria-current="page">Service</li>
+              <li class="breadcrumb-item active text-white" aria-current="page"><a href="/service" class="text-white">Service</a></li>
             </ol>
           </nav>
         </div>
@@ -92,12 +92,12 @@
           </div>
         </div>
       </section>
+      <!-- Additional sections can be added here -->
       <section>
         <div class="d-flex justify-content-center">
           <a href="#" class="btn btn-primary rounded-pill work-btn">ดูผลงาน</a>
         </div>
       </section>
-
     </div>
     <FooterComponent class="footer-section" />
   </div>
@@ -108,7 +108,7 @@ import HeaderComponent from '~/components/Header.vue';
 import FooterComponent from '~/components/Footer.vue';
 
 export default {
-  name: 'service',
+  name: 'condo',
   components: {
     HeaderComponent,
     FooterComponent
@@ -256,7 +256,7 @@ button {
   padding: 10px 40px;
   font-size: 1.1rem;
   font-family: 'Athiti', 'IBM Plex Sans Thai', sans-serif;
-  margin-top: 20px;
+  margin-top: 0px;
   margin-bottom: 40px; /* Add margin-bottom to move the button away from the bottom edge */
   text-decoration: none;
   border-radius: 50px;

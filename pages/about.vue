@@ -34,6 +34,7 @@
                 <img src="/picture.png" alt="About Us Image" class="img-fluid rounded">
                 <img src="/picture.png" alt="About Us Image" class="img-fluid rounded">
                 <img src="/picture.png" alt="About Us Image" class="img-fluid rounded">
+                <img src="/picture.png" alt="About Us Image" class="img-fluid rounded">
               </div>
               <p class="mb-3 about-text">
                 Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio,
@@ -89,20 +90,6 @@
                 Donec sed odio dui. </p>
             </div>
           </div>
-          <div class="chart-section">
-            <div class="gauge-chart"> <img src="/gauge1.png" alt="Gauge Chart 1" class="img-fluid rounded-circle">
-              <p class="chart-caption">60% New Visitors</p>
-            </div>
-            <div class="gauge-chart"> <img src="/gauge2.png" alt="Gauge Chart 2" class="img-fluid rounded-circle">
-              <p class="chart-caption">80% New Visitors</p>
-            </div>
-            <div class="gauge-chart"> <img src="/gauge3.png" alt="Gauge Chart 3" class="img-fluid rounded-circle">
-              <p class="chart-caption">75% New Visitors</p>
-            </div>
-            <div class="gauge-chart"> <img src="/gauge4.png" alt="Gauge Chart 4" class="img-fluid rounded-circle">
-              <p class="chart-caption">90% New Visitors</p>
-            </div>
-          </div>
         </div>
       </section>
     </div>
@@ -119,6 +106,25 @@ export default {
   components: {
     HeaderComponent,
     FooterComponent
+  },
+  data() {
+    return {
+    }
+  },
+  mounted() {
+    const slider = document.querySelector('.about-image');
+    const images = slider.querySelectorAll('img');
+
+    images.forEach((image) => {
+      image.addEventListener('click', (e) => {
+        images.forEach((img) => img.classList.remove('selected'));
+        e.target.classList.add('selected');
+        slider.scrollTo({
+          left: e.target.offsetLeft - slider.offsetLeft - (slider.clientWidth - e.target.clientWidth) / 2,
+          behavior: 'smooth'
+        });
+      });
+    });
   }
 }
 </script>
@@ -187,6 +193,8 @@ button {
   /* Ensure content container takes available space */
   margin-top: 70vh;
   /* Add margin to push content below the banner */
+  overflow-x: hidden;
+  /* Prevent horizontal scrolling */
 }
 
 .container {
@@ -196,7 +204,6 @@ button {
   align-items: center;
   /* Adjust alignment */
   flex-direction: column;
-  min-height: 50vh;
   /* Adjust height to ensure content is visible */
 }
 
@@ -204,6 +211,8 @@ button {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: hidden;
+  /* Prevent horizontal scrolling */
 }
 
 .footer-section {
@@ -222,7 +231,7 @@ button {
 .about-section {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 10px;
+
   /* Move the "About us" section down slightly */
 }
 
@@ -247,6 +256,9 @@ button {
   /* Hide scrollbar in IE and Edge */
   white-space: nowrap;
   /* Ensure images are in a single line */
+  cursor: pointer; /* Change cursor to pointer */
+  scroll-behavior: smooth;
+  /* Add smooth scrolling behavior */
 }
 
 .about-image img {
@@ -258,8 +270,8 @@ button {
   /* Add margin between images */
   border-radius: 5px;
   /* Add border radius to images */
-  transition: transform 0.2s;
-  /* Add transition for hover effect */
+  transition: transform 0.2s ease-in-out;
+  /* Add easing for smoother transition */
 }
 
 .about-image img:hover {
@@ -396,19 +408,89 @@ button {
   margin-top: 20px;
 }
 
-.gauge-chart {
-  text-align: center;
+@media (max-width: 768px) {
+  .about-image img {
+    max-width: 100%;
+    margin-right: 5px;
+  }
+
+  .about-content, .mission-content, .Company-content {
+    padding: 10px;
+  }
+
+  .mission-images, .circle-image {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .circle-image {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .circle-image img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .section-spacing {
+    padding: 30px 0;
+  }
+
+  .banner {
+    height: 50vh;
+  }
+
+  .content-container {
+    margin-top: 50vh;
+  }
+
+  .mission-section {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
-.gauge-chart img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-}
+@media (max-width: 480px) {
+  .about-image img {
+    max-width: 100%;
+    margin-right: 5px;
+  }
 
-.chart-caption {
-  margin-top: 5px;
-  color: #666;
-  font-size: 14px;
+  .about-content, .mission-content, .Company-content {
+    padding: 5px;
+  }
+
+  .mission-images, .circle-image {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .circle-image {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .circle-image img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .section-spacing {
+    padding: 20px 0;
+  }
+
+  .banner {
+    height: 40vh;
+  }
+
+  .content-container {
+    margin-top: 40vh;
+  }
+
+  .mission-section {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 </style>

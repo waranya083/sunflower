@@ -36,7 +36,7 @@ export default {
     '@nuxtjs/auth-next'
   ],
   axios: {
-    baseURL: 'http://127.0.0.1:8000/api', // Ensure only one baseURL is set
+    baseURL: 'http://localhost:8000/api', // Ensure the correct baseURL is set
   },
   auth: {
     strategies: {
@@ -59,5 +59,21 @@ export default {
       }
     }
   },
-  build: {},
+  build: {
+    extend(config, { isDev, isClient }) {
+      if (isClient) {
+        config.module.rules.push({
+          test: /\.mjs$/,
+          include: /node_modules/,
+          type: 'javascript/auto',
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env']
+            }
+          }
+        });
+      }
+    }
+  }
 };

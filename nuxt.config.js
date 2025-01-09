@@ -36,7 +36,7 @@ export default {
     '@nuxtjs/auth-next'
   ],
   axios: {
-    baseURL: 'http://localhost:8000/api', // Ensure the correct baseURL is set
+    baseURL: 'http://127.0.0.1:8000/api', // Ensure the correct baseURL is set
   },
   auth: {
     strategies: {

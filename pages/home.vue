@@ -112,7 +112,35 @@ export default {
   components: {
     HeaderComponent,
     FooterComponent
+  },
+  data() {
+    return {
+      serviceCategories: [],
+      services: [],
+    };
+  },
+  async asyncData({ $axios }) {
+    const serviceCategoryId = 113; // กำหนดค่า service_category_id เป็น 113
+
+    try {
+      const response = await $axios.get('/service', {
+        params: { service_category_id: serviceCategoryId },
+      });
+
+      // กรองข้อมูลในฝั่งไคลเอนต์
+      const filteredServices = response.data.service.filter(service => service.service_category_id === serviceCategoryId);
+
+      return {
+        services: Array.isArray(filteredServices) ? filteredServices : [],
+      };
+    } catch (error) {
+      console.error('Error fetching services:', error);
+      return {
+        services: [],
+      };
+    }
   }
+
 }
 </script>
 
@@ -197,20 +225,23 @@ button {
 .about-section {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 40px; /* Add margin to create space between sections */
+  margin-bottom: 40px;
+  /* Add margin to create space between sections */
 }
 
 .about-image {
   max-width: 100%;
   margin-left: auto;
-  margin-right: 0; /* Ensure the image is aligned to the right edge */
+  margin-right: 0;
+  /* Ensure the image is aligned to the right edge */
 }
 
 .about-content {
   max-width: 50%;
   margin-left: 10%;
- /* Add margin-top to create space between content and image */
+  /* Add margin-top to create space between content and image */
 }
+
 .about-btn {
   background-color: #ededed;
   border: none;
@@ -219,7 +250,8 @@ button {
   font-size: 1rem;
   font-family: 'Athiti', 'IBM Plex Sans Thai', sans-serif;
   /* Use the same font as the rest of the website */
-  margin-top: 20px; /* Reduce margin-top to make button closer to text */
+  margin-top: 20px;
+  /* Reduce margin-top to make button closer to text */
   text-decoration: none;
   border-radius: 50px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -243,11 +275,13 @@ button {
   border-radius: 50%;
   margin-right: 10px;
 }
+
 .about-text {
   font-size: 1.2rem;
   line-height: 1.2;
   margin-top: 10px;
-  margin-bottom: 10px; /* Reduce margin-bottom to make text closer to button */
+  margin-bottom: 10px;
+  /* Reduce margin-bottom to make text closer to button */
 }
 
 .work-btn {
@@ -266,8 +300,10 @@ button {
   text-align: center;
   cursor: pointer;
   position: relative;
-  width: 140px; /* Reduce the width of the button */
-  border: none; /* Remove the border */
+  width: 140px;
+  /* Reduce the width of the button */
+  border: none;
+  /* Remove the border */
 }
 
 .work-btn::after {

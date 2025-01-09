@@ -9,7 +9,7 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center bg-transparent p-0 m-0">
               <li class="breadcrumb-item"><a href="/" class="text-white">Home</a></li>
-              <li class="breadcrumb-item active text-white" aria-current="page">Service</li>
+              <li class="breadcrumb-item active text-white" aria-current="page"><a href="/service" class="text-white">Service</a></li>
             </ol>
           </nav>
         </div>
@@ -31,7 +31,7 @@
             <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
           </div>
           <div class="about-image frame">
-            <img src="/service/Livingroom.jpg" alt="Livingroom" class="img-fluid">
+            <img src="/long.jpg" alt="Livingroom" class="img-fluid">
           </div>
         </div>
       </section>
@@ -49,8 +49,8 @@
             </p>
             <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
           </div>
-          <div class="about-image frame">
-            <img src="/service/Bedroom.jpg" alt="Bedroom" class="img-fluid">
+          <div class="about-image frame-2">
+            <img src="/long.jpg" alt="Bedroom" class="img-fluid">
           </div>
         </div>
       </section>
@@ -69,7 +69,7 @@
             <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
           </div>
           <div class="about-image frame">
-            <img src="/service/Walk-in Closet.jpg" alt="Walk-in Closet" class="img-fluid">
+            <img src="/long.jpg" alt="Walk-in Closet" class="img-fluid">
           </div>
         </div>
       </section>
@@ -87,8 +87,8 @@
             </p>
             <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
           </div>
-          <div class="about-image frame">
-            <img src="/service/Kitchen.jpg" alt="Kitchen" class="img-fluid">
+          <div class="about-image frame-2">
+            <img src="/long.jpg" alt="Kitchen" class="img-fluid">
           </div>
         </div>
       </section>
@@ -112,6 +112,33 @@ export default {
   components: {
     HeaderComponent,
     FooterComponent
+  },
+  data() {
+    return {
+      serviceCategories: [],
+      services: [],
+    };
+  },
+  async asyncData({ $axios }) {
+    const serviceCategoryId = 114; // กำหนดค่า service_category_id เป็น 113
+
+    try {
+      const response = await $axios.get('/service', {
+        params: { service_category_id: serviceCategoryId },
+      });
+
+      // กรองข้อมูลในฝั่งไคลเอนต์
+      const filteredServices = response.data.service.filter(service => service.service_category_id === serviceCategoryId);
+
+      return {
+        services: Array.isArray(filteredServices) ? filteredServices : [],
+      };
+    } catch (error) {
+      console.error('Error fetching services:', error);
+      return {
+        services: [],
+      };
+    }
   }
 }
 </script>
@@ -198,19 +225,25 @@ button {
   display: flex;
   justify-content: space-between;
   margin-bottom: 40px; /* Add margin to create space between sections */
+  padding: 0; /* Remove padding from the section */
 }
 
 .about-image {
   max-width: 100%;
-  margin-left: auto;
-  margin-right: 0; /* Ensure the image is aligned to the right edge */
+  width: 100%; /* Make the image full width */
+  height: 350px; /* Keep the height consistent */
+  margin: 0; /* Remove margin */
+  padding: 0; /* Remove padding */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+  align-self: flex-end; /* Align the image to the right edge */
 }
 
 .about-content {
   max-width: 50%;
   margin-left: 10%;
- /* Add margin-top to create space between content and image */
+  /* Add margin-top to create space between content and image */
 }
+
 .about-btn {
   background-color: #ededed;
   border: none;
@@ -219,7 +252,8 @@ button {
   font-size: 1rem;
   font-family: 'Athiti', 'IBM Plex Sans Thai', sans-serif;
   /* Use the same font as the rest of the website */
-  margin-top: 20px; /* Reduce margin-top to make button closer to text */
+  margin-top: 20px;
+  /* Reduce margin-top to make button closer to text */
   text-decoration: none;
   border-radius: 50px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -243,11 +277,13 @@ button {
   border-radius: 50%;
   margin-right: 10px;
 }
+
 .about-text {
   font-size: 1.2rem;
   line-height: 1.2;
   margin-top: 10px;
-  margin-bottom: 10px; /* Reduce margin-bottom to make text closer to button */
+  margin-bottom: 10px;
+  /* Reduce margin-bottom to make text closer to button */
 }
 
 .work-btn {
@@ -256,7 +292,7 @@ button {
   padding: 10px 40px;
   font-size: 1.1rem;
   font-family: 'Athiti', 'IBM Plex Sans Thai', sans-serif;
-  margin-top: 20px;
+  margin-top: 0px;
   margin-bottom: 40px; /* Add margin-bottom to move the button away from the bottom edge */
   text-decoration: none;
   border-radius: 50px;
@@ -266,8 +302,10 @@ button {
   text-align: center;
   cursor: pointer;
   position: relative;
-  width: 140px; /* Reduce the width of the button */
-  border: none; /* Remove the border */
+  width: 140px;
+  /* Reduce the width of the button */
+  border: none;
+  /* Remove the border */
 }
 
 .work-btn::after {

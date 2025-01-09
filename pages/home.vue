@@ -9,30 +9,86 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center bg-transparent p-0 m-0">
               <li class="breadcrumb-item"><a href="/" class="text-white">Home</a></li>
-              <li class="breadcrumb-item active text-white" aria-current="page"><a href="/service"
-                  class="text-white">Service</a></li>
+              <li class="breadcrumb-item active text-white" aria-current="page">Service</li>
             </ol>
           </nav>
         </div>
       </div>
     </div>
     <div class="content-container">
-      <section v-if="services && services.length">
-        <div v-for="(service, index) in services" :key="index">
-          <div class="d-flex justify-content-start align-items-center about-section">
-            <div class="text-left p-3 about-content">
-              <div class="d-flex align-items-center mb-2">
-                <div class="yellow-dot"></div>
-                <h2 class="text-bold mb-2 about-heading">{{ service.title }}</h2>
-              </div>
-              <p class="mb-3 about-text">
-                {{ service.short_detail }}
-              </p>
-              <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
+      <section>
+        <div class="d-flex justify-content-start align-items-center about-section">
+          <div class="text-left p-3 about-content">
+            <div class="d-flex align-items-center mb-2">
+              <div class="yellow-dot"></div>
+              <h2 class="text-bold mb-2 about-heading">Livingroom</h2>
             </div>
-            <div class="about-image" v-if="service.image && service.image.length">
-              <img :src="service.image[0]" alt="Livingroom" class="img-fluid">
+            <p class="mb-3 about-text">
+              Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio,
+              dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl
+              consectetur et.
+            </p>
+            <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
+          </div>
+          <div class="about-image frame">
+            <img src="/service/Livingroom.jpg" alt="Livingroom" class="img-fluid">
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="d-flex justify-content-start align-items-center about-section">
+          <div class="text-left p-3 about-content">
+            <div class="d-flex align-items-center mb-2">
+              <div class="yellow-dot"></div>
+              <h2 class="text-bold mb-2 about-heading">Bedroom</h2>
             </div>
+            <p class="mb-3 about-text">
+              Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio,
+              dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl
+              consectetur et.
+            </p>
+            <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
+          </div>
+          <div class="about-image frame-2">
+            <img src="/service/Bedroom.jpg" alt="Bedroom" class="img-fluid">
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="d-flex justify-content-start align-items-center about-section">
+          <div class="text-left p-3 about-content">
+            <div class="d-flex align-items-center mb-2">
+              <div class="yellow-dot"></div>
+              <h2 class="text-bold mb-2 about-heading">Walk-in Closet</h2>
+            </div>
+            <p class="mb-3 about-text">
+              Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio,
+              dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl
+              consectetur et.
+            </p>
+            <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
+          </div>
+          <div class="about-image frame">
+            <img src="/service/Walk-in Closet.jpg" alt="Walk-in Closet" class="img-fluid">
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="d-flex justify-content-start align-items-center about-section">
+          <div class="text-left p-3 about-content">
+            <div class="d-flex align-items-center mb-2">
+              <div class="yellow-dot"></div>
+              <h2 class="text-bold mb-2 about-heading">Kitchen</h2>
+            </div>
+            <p class="mb-3 about-text">
+              Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio,
+              dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl
+              consectetur et.
+            </p>
+            <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
+          </div>
+          <div class="about-image frame-2">
+            <img src="/service/Kitchen.jpg" alt="Kitchen" class="img-fluid">
           </div>
         </div>
       </section>
@@ -234,9 +290,8 @@ button {
   padding: 10px 40px;
   font-size: 1.1rem;
   font-family: 'Athiti', 'IBM Plex Sans Thai', sans-serif;
-  margin-top: 0px;
-  margin-bottom: 40px;
-  /* Add margin-bottom to move the button away from the bottom edge */
+  margin-top: 20px;
+  margin-bottom: 40px; /* Add margin-bottom to move the button away from the bottom edge */
   text-decoration: none;
   border-radius: 50px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);

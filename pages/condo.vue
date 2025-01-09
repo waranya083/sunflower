@@ -5,7 +5,7 @@
       style="background-image:url('/banner/servicebn.png'); height: 70vh; background-position: bottom;">
       <div class="container h-100 d-flex justify-content-center align-items-center">
         <div class="text-center">
-          <h1 class="text-white">รับออกแบบตกแต่งภายในคอนโด</h1>
+          <h1 class="text-white">รับออกแบบตกแต่งภายในบ้าน</h1>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center bg-transparent p-0 m-0">
               <li class="breadcrumb-item"><a href="/" class="text-white">Home</a></li>
@@ -36,12 +36,12 @@
           </div>
         </div>
       </section>
-      <!-- Additional sections can be added here -->
       <section>
         <div class="d-flex justify-content-center">
           <a href="#" class="btn btn-primary rounded-pill work-btn">ดูผลงาน</a>
         </div>
       </section>
+
     </div>
     <FooterComponent class="footer-section" />
   </div>
@@ -52,7 +52,7 @@ import HeaderComponent from '~/components/Header.vue';
 import FooterComponent from '~/components/Footer.vue';
 
 export default {
-  name: 'condo',
+  name: 'service',
   components: {
     HeaderComponent,
     FooterComponent
@@ -266,30 +266,20 @@ button {
 .work-btn:hover::after {
   transform: translateX(5px);
 }
-
-/* Custom frame styling */
 .frame {
-  border-radius: 35% 0 0 0; /* ปรับค่านี้เพื่อให้เฉพาะมุมซ้ายบนโค้ง */
+  border-radius: 180px 0 0 180px; /* ปรับค่านี้เพื่อให้เฉพาะมุมซ้ายบนโค้ง */
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px;
+
 }
-.frame-2 {
-  border-radius: 0% 0% 0% 35%; /* ปรับค่านี้เพื่อให้เฉพาะมุมซ้ายบนโค้ง */
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-}
+
 
 .frame img {
-  width: 100%;
-  height: 100%;
+  width: 750px; /* Reduce the width to make the image smaller */
+  height: 350px; /* Adjust the height accordingly */
   object-fit: cover;
 }
-
 
 </style>

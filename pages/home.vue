@@ -36,12 +36,12 @@
           </div>
         </div>
       </section>
-      <!-- Additional sections can be added here -->
       <section>
         <div class="d-flex justify-content-center">
           <a href="#" class="btn btn-primary rounded-pill work-btn">ดูผลงาน</a>
         </div>
       </section>
+
     </div>
     <FooterComponent class="footer-section" />
   </div>
@@ -52,7 +52,7 @@ import HeaderComponent from '~/components/Header.vue';
 import FooterComponent from '~/components/Footer.vue';
 
 export default {
-  name: 'home',
+  name: 'service',
   components: {
     HeaderComponent,
     FooterComponent
@@ -267,18 +267,30 @@ button {
 .work-btn:hover::after {
   transform: translateX(5px);
 }
-
 .frame {
-  border-radius: 50% 0% 0 50%; /* ปรับค่านี้เพื่อให้เฉพาะมุมซ้ายบนโค้ง */
+  border-radius: 150px 0 0 0; /* ปรับค่านี้เพื่อให้เฉพาะมุมซ้ายบนโค้ง */
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px;
+
 }
+.frame-2 {
+  border-radius: 0% 0% 0% 150px; /* ปรับค่านี้เพื่อให้เฉพาะมุมซ้ายบนโค้ง */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .frame img {
-  width: 100%;
-  height: 80%;
+  width: 750px; /* Reduce the width to make the image smaller */
+  height: 350px; /* Adjust the height accordingly */
+  object-fit: cover;
+}
+.frame-2 img {
+  width: 750px; /* Reduce the width to make the image smaller */
+  height: 350px; /* Adjust the height accordingly */
   object-fit: cover;
 }
 </style>

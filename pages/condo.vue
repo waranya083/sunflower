@@ -266,4 +266,30 @@ button {
 .work-btn:hover::after {
   transform: translateX(5px);
 }
+
+/* Custom frame styling */
+.frame {
+  border-radius: 35% 0 0 0; /* ปรับค่านี้เพื่อให้เฉพาะมุมซ้ายบนโค้ง */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+.frame-2 {
+  border-radius: 0% 0% 0% 35%; /* ปรับค่านี้เพื่อให้เฉพาะมุมซ้ายบนโค้ง */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
 </style>

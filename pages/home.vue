@@ -267,4 +267,18 @@ button {
 .work-btn:hover::after {
   transform: translateX(5px);
 }
+
+.frame {
+  border-radius: 50% 0% 0 50%; /* ปรับค่านี้เพื่อให้เฉพาะมุมซ้ายบนโค้ง */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+.frame img {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+}
 </style>

@@ -9,95 +9,39 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center bg-transparent p-0 m-0">
               <li class="breadcrumb-item"><a href="/" class="text-white">Home</a></li>
-              <li class="breadcrumb-item active text-white" aria-current="page">Service</li>
+              <li class="breadcrumb-item active text-white" aria-current="page"><a href="/service"
+                  class="text-white">Service</a></li>
             </ol>
           </nav>
         </div>
       </div>
     </div>
     <div class="content-container">
-      <section>
-        <div class="d-flex justify-content-start align-items-center about-section">
-          <div class="text-left p-3 about-content">
-            <div class="d-flex align-items-center mb-2">
-              <div class="yellow-dot"></div>
-              <h2 class="text-bold mb-2 about-heading">Livingroom</h2>
+      <section v-if="services && services.length">
+        <div v-for="(service, index) in services" :key="index">
+          <div class="d-flex justify-content-start align-items-center about-section">
+            <div class="text-left p-3 about-content">
+              <div class="d-flex align-items-center mb-2">
+                <div class="yellow-dot"></div>
+                <h2 class="text-bold mb-2 about-heading">{{ service.title }}</h2>
+              </div>
+              <p class="mb-3 about-text">
+                {{ service.short_detail }}
+              </p>
+              <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
             </div>
-            <p class="mb-3 about-text">
-              Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio,
-              dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl
-              consectetur et.
-            </p>
-            <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
-          </div>
-          <div class="about-image frame">
-            <img src="/service/Livingroom.jpg" alt="Livingroom" class="img-fluid">
+            <div class="about-image" v-if="service.image && service.image.length">
+              <img :src="service.image[0]" alt="Livingroom" class="img-fluid">
+            </div>
           </div>
         </div>
       </section>
-      <section>
-        <div class="d-flex justify-content-start align-items-center about-section">
-          <div class="text-left p-3 about-content">
-            <div class="d-flex align-items-center mb-2">
-              <div class="yellow-dot"></div>
-              <h2 class="text-bold mb-2 about-heading">Bedroom</h2>
-            </div>
-            <p class="mb-3 about-text">
-              Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio,
-              dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl
-              consectetur et.
-            </p>
-            <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
-          </div>
-          <div class="about-image frame-2">
-            <img src="/service/Bedroom.jpg" alt="Bedroom" class="img-fluid">
-          </div>
-        </div>
-      </section>
-      <section>
-        <div class="d-flex justify-content-start align-items-center about-section">
-          <div class="text-left p-3 about-content">
-            <div class="d-flex align-items-center mb-2">
-              <div class="yellow-dot"></div>
-              <h2 class="text-bold mb-2 about-heading">Walk-in Closet</h2>
-            </div>
-            <p class="mb-3 about-text">
-              Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio,
-              dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl
-              consectetur et.
-            </p>
-            <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
-          </div>
-          <div class="about-image frame">
-            <img src="/service/Walk-in Closet.jpg" alt="Walk-in Closet" class="img-fluid">
-          </div>
-        </div>
-      </section>
-      <section>
-        <div class="d-flex justify-content-start align-items-center about-section">
-          <div class="text-left p-3 about-content">
-            <div class="d-flex align-items-center mb-2">
-              <div class="yellow-dot"></div>
-              <h2 class="text-bold mb-2 about-heading">Kitchen</h2>
-            </div>
-            <p class="mb-3 about-text">
-              Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio,
-              dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl
-              consectetur et.
-            </p>
-            <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
-          </div>
-          <div class="about-image frame-2">
-            <img src="/service/Kitchen.jpg" alt="Kitchen" class="img-fluid">
-          </div>
-        </div>
-      </section>
+      <!-- Additional sections can be added here -->
       <section>
         <div class="d-flex justify-content-center">
           <a href="#" class="btn btn-primary rounded-pill work-btn">ดูผลงาน</a>
         </div>
       </section>
-
     </div>
     <FooterComponent class="footer-section" />
   </div>
@@ -108,11 +52,39 @@ import HeaderComponent from '~/components/Header.vue';
 import FooterComponent from '~/components/Footer.vue';
 
 export default {
-  name: 'service',
+  name: 'home',
   components: {
     HeaderComponent,
     FooterComponent
+  },
+  data() {
+    return {
+      serviceCategories: [],
+      services: [],
+    };
+  },
+  async asyncData({ $axios }) {
+    const serviceCategoryId = 113; // กำหนดค่า service_category_id เป็น 113
+
+    try {
+      const response = await $axios.get('/service', {
+        params: { service_category_id: serviceCategoryId },
+      });
+
+      // กรองข้อมูลในฝั่งไคลเอนต์
+      const filteredServices = response.data.service.filter(service => service.service_category_id === serviceCategoryId);
+
+      return {
+        services: Array.isArray(filteredServices) ? filteredServices : [],
+      };
+    } catch (error) {
+      console.error('Error fetching services:', error);
+      return {
+        services: [],
+      };
+    }
   }
+
 }
 </script>
 
@@ -197,20 +169,23 @@ button {
 .about-section {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 40px; /* Add margin to create space between sections */
+  margin-bottom: 40px;
+  /* Add margin to create space between sections */
 }
 
 .about-image {
   max-width: 100%;
   margin-left: auto;
-  margin-right: 0; /* Ensure the image is aligned to the right edge */
+  margin-right: 0;
+  /* Ensure the image is aligned to the right edge */
 }
 
 .about-content {
   max-width: 50%;
   margin-left: 10%;
- /* Add margin-top to create space between content and image */
+  /* Add margin-top to create space between content and image */
 }
+
 .about-btn {
   background-color: #ededed;
   border: none;
@@ -219,7 +194,8 @@ button {
   font-size: 1rem;
   font-family: 'Athiti', 'IBM Plex Sans Thai', sans-serif;
   /* Use the same font as the rest of the website */
-  margin-top: 20px; /* Reduce margin-top to make button closer to text */
+  margin-top: 20px;
+  /* Reduce margin-top to make button closer to text */
   text-decoration: none;
   border-radius: 50px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -243,11 +219,13 @@ button {
   border-radius: 50%;
   margin-right: 10px;
 }
+
 .about-text {
   font-size: 1.2rem;
   line-height: 1.2;
   margin-top: 10px;
-  margin-bottom: 10px; /* Reduce margin-bottom to make text closer to button */
+  margin-bottom: 10px;
+  /* Reduce margin-bottom to make text closer to button */
 }
 
 .work-btn {
@@ -256,8 +234,9 @@ button {
   padding: 10px 40px;
   font-size: 1.1rem;
   font-family: 'Athiti', 'IBM Plex Sans Thai', sans-serif;
-  margin-top: 20px;
-  margin-bottom: 40px; /* Add margin-bottom to move the button away from the bottom edge */
+  margin-top: 0px;
+  margin-bottom: 40px;
+  /* Add margin-bottom to move the button away from the bottom edge */
   text-decoration: none;
   border-radius: 50px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -266,8 +245,10 @@ button {
   text-align: center;
   cursor: pointer;
   position: relative;
-  width: 140px; /* Reduce the width of the button */
-  border: none; /* Remove the border */
+  width: 140px;
+  /* Reduce the width of the button */
+  border: none;
+  /* Remove the border */
 }
 
 .work-btn::after {
@@ -285,31 +266,5 @@ button {
 
 .work-btn:hover::after {
   transform: translateX(5px);
-}
-.frame {
-  border-radius: 150px 0 0 0; /* ปรับค่านี้เพื่อให้เฉพาะมุมซ้ายบนโค้ง */
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-}
-.frame-2 {
-  border-radius: 0% 0% 0% 150px; /* ปรับค่านี้เพื่อให้เฉพาะมุมซ้ายบนโค้ง */
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.frame img {
-  width: 750px; /* Reduce the width to make the image smaller */
-  height: 350px; /* Adjust the height accordingly */
-  object-fit: cover;
-}
-.frame-2 img {
-  width: 750px; /* Reduce the width to make the image smaller */
-  height: 350px; /* Adjust the height accordingly */
-  object-fit: cover;
 }
 </style>

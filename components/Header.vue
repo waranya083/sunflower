@@ -10,17 +10,17 @@
         <img src="/logo.png" alt="Sunflower House Logo">
       </div>
       <div class="menu" :class="{ 'menu-open': isMenuOpen }">
-        <nuxt-link to="/" exact-active-class="active-tab">Home</nuxt-link>
-        <nuxt-link to="/about" exact-active-class="active-tab">About Us</nuxt-link>
-        <div class="dropdown">
-          <nuxt-link to="/service" exact-active-class="active-tab">Service</nuxt-link>
-          <div class="dropdown-content">
-            <nuxt-link to="/home" exact-active-class="active-tab"><i class="fas fa-home"></i> รับออกแบบตกแต่งภายใน บ้าน</nuxt-link>
-            <nuxt-link to="/condo" exact-active-class="active-tab"><i class="fas fa-building"></i> รับออกแบบตกแต่งภายใน คอนโด</nuxt-link>
+        <nuxt-link to="/" exact-active-class="active-tab" @click="setActiveTab('home')">Home</nuxt-link>
+        <nuxt-link to="/about" exact-active-class="active-tab" @click="setActiveTab('about')">About Us</nuxt-link>
+        <div class="dropdown" @click.stop="toggleDropdown">
+          <button class="dropbtn" :class="{ 'active-tab': isDropdownOpen }">Service</button>
+          <div class="dropdown-content" :class="{ 'show': isDropdownOpen }">
+            <nuxt-link to="/home" exact-active-class="active-tab" @click="setActiveTab('home-service')"><i class="fas fa-home"></i> รับออกแบบตกแต่งภายใน บ้าน</nuxt-link>
+            <nuxt-link to="/condo" exact-active-class="active-tab" @click="setActiveTab('condo-service')"><i class="fas fa-building"></i> รับออกแบบตกแต่งภายใน คอนโด</nuxt-link>
           </div>
         </div>
-        <nuxt-link to="/portfolio" exact-active-class="active-tab">Portfolio</nuxt-link>
-        <nuxt-link to="/contact" exact-active-class="active-tab">Contact Us</nuxt-link>
+        <nuxt-link to="/portfolio" exact-active-class="active-tab" @click="setActiveTab('portfolio')">Portfolio</nuxt-link>
+        <nuxt-link to="/contact" exact-active-class="active-tab" @click="setActiveTab('contact')">Contact Us</nuxt-link>
         <div class="social-icons">
           <a href="#"><i class="fab fa-facebook"></i></a>
           <a href="#"><i class="fab fa-line"></i></a>
@@ -40,16 +40,37 @@ export default {
   name: 'HeaderComponent',
   data() {
     return {
-      isMenuOpen: false
+      isMenuOpen: false,
+      isDropdownOpen: false,
+      activeTab: '' // Add this line
     };
   },
   methods: {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
+    },
+    toggleDropdown(event) {
+      event.stopPropagation();
+      this.isDropdownOpen = !this.isDropdownOpen;
+      this.setActiveTab('service'); // Add this line
+    },
+    setActiveTab(tab) { // Add this method
+      this.activeTab = tab;
+      this.isDropdownOpen = tab === 'service';
+    },
+    closeDropdown() {
+      this.isDropdownOpen = false;
     }
+  },
+  mounted() {
+    document.addEventListener('click', this.closeDropdown);
+  },
+  beforeDestroy() {
+    document.removeEventListener('click', this.closeDropdown);
   }
 }
 </script>
+
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Athiti:wght@200;300;400;500;600;700&family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&display=swap');
@@ -120,7 +141,7 @@ export default {
   margin-left: 0; /* Remove margin to make nav items closer */
 }
 
-.nav .menu a {
+.nav .menu a, .dropbtn {
   text-decoration: none;
   color: #333;
   font-size: 1.1rem;
@@ -152,7 +173,7 @@ export default {
   z-index: 1;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown-content.show {
   display: block;
 }
 

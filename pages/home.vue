@@ -9,7 +9,7 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center bg-transparent p-0 m-0">
               <li class="breadcrumb-item"><a href="/" class="text-white">Home</a></li>
-              <li class="breadcrumb-item active text-white" aria-current="page"><a href="/service" class="text-white">Service</a></li>
+              <li class="breadcrumb-item active text-white" aria-current="page">Service</li>
             </ol>
           </nav>
         </div>
@@ -31,7 +31,7 @@
             <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
           </div>
           <div class="about-image frame">
-            <img src="/long.jpg "alt="Livingroom" class="img-fluid">
+            <img src="/service/Livingroom.jpg" alt="Livingroom" class="img-fluid">
           </div>
         </div>
       </section>
@@ -49,8 +49,8 @@
             </p>
             <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
           </div>
-          <div class="about-image frame">
-            <img src="/long.jpg " alt="Bedroom" class="img-fluid">
+          <div class="about-image frame-2">
+            <img src="/service/Bedroom.jpg" alt="Bedroom" class="img-fluid">
           </div>
         </div>
       </section>
@@ -69,7 +69,7 @@
             <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
           </div>
           <div class="about-image frame">
-            <img src="/long.jpg " alt="Walk-in Closet" class="img-fluid">
+            <img src="/service/Walk-in Closet.jpg" alt="Walk-in Closet" class="img-fluid">
           </div>
         </div>
       </section>
@@ -87,17 +87,17 @@
             </p>
             <a href="#" class="btn btn-primary rounded-pill about-btn">Read More</a>
           </div>
-          <div class="about-image frame">
-            <img src="/long.jpg " alt="Kitchen" class="img-fluid">
+          <div class="about-image frame-2">
+            <img src="/service/Kitchen.jpg" alt="Kitchen" class="img-fluid">
           </div>
         </div>
       </section>
-      <!-- Additional sections can be added here -->
       <section>
         <div class="d-flex justify-content-center">
           <a href="#" class="btn btn-primary rounded-pill work-btn">ดูผลงาน</a>
         </div>
       </section>
+
     </div>
     <FooterComponent class="footer-section" />
   </div>
@@ -108,7 +108,7 @@ import HeaderComponent from '~/components/Header.vue';
 import FooterComponent from '~/components/Footer.vue';
 
 export default {
-  name: 'home',
+  name: 'service',
   components: {
     HeaderComponent,
     FooterComponent
@@ -256,7 +256,7 @@ button {
   padding: 10px 40px;
   font-size: 1.1rem;
   font-family: 'Athiti', 'IBM Plex Sans Thai', sans-serif;
-  margin-top: 0px;
+  margin-top: 20px;
   margin-bottom: 40px; /* Add margin-bottom to move the button away from the bottom edge */
   text-decoration: none;
   border-radius: 50px;
@@ -286,18 +286,30 @@ button {
 .work-btn:hover::after {
   transform: translateX(5px);
 }
-
 .frame {
-  border-radius: 50% 0% 0 50%; /* ปรับค่านี้เพื่อให้เฉพาะมุมซ้ายบนโค้ง */
+  border-radius: 150px 0 0 0; /* ปรับค่านี้เพื่อให้เฉพาะมุมซ้ายบนโค้ง */
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px;
+
 }
+.frame-2 {
+  border-radius: 0% 0% 0% 150px; /* ปรับค่านี้เพื่อให้เฉพาะมุมซ้ายบนโค้ง */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .frame img {
-  width: 100%;
-  height: 80%;
+  width: 750px; /* Reduce the width to make the image smaller */
+  height: 350px; /* Adjust the height accordingly */
+  object-fit: cover;
+}
+.frame-2 img {
+  width: 750px; /* Reduce the width to make the image smaller */
+  height: 350px; /* Adjust the height accordingly */
   object-fit: cover;
 }
 </style>
